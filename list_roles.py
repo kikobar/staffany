@@ -1,5 +1,7 @@
 import requests
 from config import *
+import json
+from push import *
 
 def list_roles():
     url = baseUrl+"/workspace/v2/roles"
@@ -9,8 +11,10 @@ def list_roles():
         "Authorization": "Bearer "+accessKey}
 
     response = requests.request("GET", url, headers=headers, data=payload)
-
-    print(response.text)
+    roles = json.loads(response.text)['data']['items']
+    for key in roles:
+        print(key)
+        push(key,rolesCollection)
 
 
 
