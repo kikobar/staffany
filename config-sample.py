@@ -1,4 +1,5 @@
 accessKey = "YOUR-ACCESS-KEY-HERE"
+baseUrl = "https://api.staffany.com"
 
 # MongoDB Database parameters
 
