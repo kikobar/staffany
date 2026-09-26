@@ -1,5 +1,6 @@
 accessKey = "YOUR-ACCESS-KEY-HERE"
 baseUrl = "https://api.staffany.com"
+IANATimeZone = "Asia/Singapore"
 
 # MongoDB Database parameters
 
