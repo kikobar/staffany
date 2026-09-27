@@ -3,6 +3,7 @@ from config import *
 import json
 from datetime import datetime, timezone, UTC, date, timedelta
 from zoneinfo import ZoneInfo
+from push import *
 
 def retrieve_timesheet_attendance_data():
     from_date = str(input('From date [YYYY-MM-DD]: '))
@@ -22,8 +23,18 @@ def retrieve_timesheet_attendance_data():
         }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-
-    print(response.text)
+    shiftRecords = json.loads(response.text)['data']['shiftRecords']
+    for key in shiftRecords:
+        print(key)
+        push(key,shiftRecordsCollection)
+    clockAttempts = json.loads(response.text)['data']['clockAttempts']
+    for key in clockAttempts:
+        print(key)
+        push(key,clockAttemptsCollection)
+    workHours = json.loads(response.text)['data']['workHours']
+    for key in workHours:
+        print(key)
+        push(key,workHoursCollection)
 
 
 
