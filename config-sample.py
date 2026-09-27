@@ -11,4 +11,5 @@ shiftsCollection = "YOUR-shifts-COLLECTION-HERE"
 staffCollection = "YOUR-staff-COLLECTION-HERE"
 sectionsCollection = "YOUR-sections-COLLECTION-HERE"
 rolesCollection = "YOUR-roles-COLLECTION-HERE"
+slotsCollection = "YOUR-slots-COLLECTION-HERE"
 
