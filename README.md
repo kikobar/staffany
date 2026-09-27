@@ -1,6 +1,6 @@
 **Objective**
 
-These Python scripts allow to extract records from the StaffAny API and post them to a Mongo database.
+These Python scripts allow to extract records from the StaffAny API and post them to a MongoDB database.
 
 **Requirements**
 
@@ -12,4 +12,4 @@ These Python scripts allow to extract records from the StaffAny API and post the
 
 * Copy the file `config-sample.py` to `config.py`.
 * Edit `config.py` with your credentials and defaults.
-* 
+* To execute any script run `python3 script.py`
