@@ -11,5 +11,8 @@ def push(document,collection):
 	
 	
 if __name__ == '__main__':
-    push(sys.argv[1],sys.argv[2])
+    if len(sys.argv) != 3:
+        print('Please pass exactly 2 parameters to this script: 1) json document 2) collection name')
+    else:
+        push(json.loads(sys.argv[1]),sys.argv[2])
     
