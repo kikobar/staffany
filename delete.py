@@ -12,5 +12,8 @@ def delete(collec,query_filter):
 	
 	
 if __name__ == '__main__':
-    delete(sys.argv[1],sys.argv[2])
+    if len(sys.argv) != 3:
+        print('Please pass exactly 2 parameters to this script: 1) collection name 2) query')
+    else:
+        delete(sys.argv[1],json.loads(sys.argv[2]))
     
