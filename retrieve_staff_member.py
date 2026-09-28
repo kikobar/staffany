@@ -16,5 +16,8 @@ def retrieve_staff_member(staffId):
 
 
 if __name__ == '__main__':
-    retrieve_staff_member(sys.argv[1])
+    if len(sys.argv) != 2:
+        print('Please pass exactly 1 parameter, the staffId of the staff member')
+    else:
+        retrieve_staff_member(sys.argv[1])
 
