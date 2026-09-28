@@ -1,16 +1,18 @@
 import requests
 from config import *
 import json
+import sys
 from datetime import datetime, timezone, UTC, date, timedelta
 from zoneinfo import ZoneInfo
 from push import *
 
-def list_shifts():
-    from_date = str(input('From date [YYYY-MM-DD]: '))
+def list_shifts(from_date=None,to_date=None):
+    if not (from_date and to_date):
+        from_date = str(input('From date [YYYY-MM-DD]: '))
+        to_date = str(input('To date [YYYY-MM-DD]: '))
     from_date = str(datetime.strptime(from_date+" 00:01", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(IANATimeZone)))
     from_date = datetime.fromisoformat(from_date).timestamp()
     from_date = datetime.fromtimestamp(from_date,tz=timezone.utc).isoformat().replace("+00:00","Z")
-    to_date = str(input('To date [YYYY-MM-DD]: '))
     to_date = str(datetime.strptime(to_date+" 23:59", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(IANATimeZone)))
     to_date = datetime.fromisoformat(to_date).timestamp()
     to_date = datetime.fromtimestamp(to_date,tz=timezone.utc).isoformat().replace("+00:00","Z")
@@ -30,5 +32,8 @@ def list_shifts():
 
 
 if __name__ == '__main__':
-    list_shifts()
+    if len(sys.argv) != 3:
+        list_shifts()
+    else:
+        list_shifts(sys.argv[1],sys.argv[2])
 
