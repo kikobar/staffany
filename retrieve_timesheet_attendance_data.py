@@ -4,10 +4,12 @@ import json
 from datetime import datetime, timezone, UTC, date, timedelta
 from zoneinfo import ZoneInfo
 from push import *
+import sys
 
-def retrieve_timesheet_attendance_data():
-    from_date = str(input('From date [YYYY-MM-DD]: '))
-    to_date = str(input('To date [YYYY-MM-DD]: '))
+def retrieve_timesheet_attendance_data(from_date=None,to_date=None):
+    if not (from_date and to_date):
+        from_date = str(input('From date [YYYY-MM-DD]: '))
+        to_date = str(input('To date [YYYY-MM-DD]: '))
 
     url = baseUrl+"/workspace/v1/timesheets"
 
@@ -39,5 +41,8 @@ def retrieve_timesheet_attendance_data():
 
 
 if __name__ == '__main__':
-    retrieve_timesheet_attendance_data()
+    if len(sys.argv) != 3:
+        retrieve_timesheet_attendance_data()
+    else:
+        retrieve_timesheet_attendance_data(sys.argv[1],sys.argv[2])
 
